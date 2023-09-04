@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ImageBackground} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 
 const LoginScreen = () => {
@@ -13,7 +13,7 @@ const LoginScreen = () => {
     if (enteredUsername === correctUsername && enteredPassword === correctPassword) {
       navigation.navigate('Home'); 
     } else {
-      alert('Login failed. Please check your username and password.');
+      alert('Usuario ou Senha incorretos, tente novamente!');
     }
   };
   const handleCadastro = () => {
@@ -28,22 +28,22 @@ const LoginScreen = () => {
 
           <View style={styles.loginCard}>
             
-            <Text style={styles.loginTitle}>Login</Text>
+            <Text style={styles.loginTitle}>Entre na sua Conta</Text>
 
             <View style={styles.inputWrapper}>
-              <TextInput style={styles.inputField} placeholder="username" />
+              <TextInput style={styles.inputField} placeholder="Usuário" />
             </View>
 
             <View style={styles.inputWrapper}>
-              <TextInput style={styles.inputField} placeholder="password" secureTextEntry />
+              <TextInput style={styles.inputField} placeholder="Senha" secureTextEntry />
             </View>
 
             <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-              <Text style={styles.loginButtonText}>Login</Text>
+              <Text style={styles.loginButtonText}>Entrar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.CadastroButton} onPress={handleCadastro}>
-              <Text style={styles.CadastroButtonText}>Clique aqui para se cadastrar no nosso site!!</Text>
+              <Text style={styles.CadastroButtonText}>Não possui conta? Clique aqui!</Text>
             </TouchableOpacity>
 
           </View>
@@ -58,33 +58,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  profileImage: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
   bodyContainer: {
     justifyContent: 'center',
     height: '80%',
     width: '100%',
   },
-  roundedImage: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
-  },
-  imageBackground: {
-    flex: 1,
-    resizeMode: 'cover'
-  },
   loginCard: {
-    backgroundColor: 'white',
-    borderColor: 'black',
+    backgroundColor: '#fff',
+    borderColor: '#D0FFF1',
     borderRadius: 10,
-    shadowColor: '#000',
+    shadowColor: '#D0FFF1',
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.1,
     shadowRadius: 20,
@@ -95,7 +78,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     marginBottom: 20,
     textAlign: 'center',
-    color: '#333',
+    color: '#00b5b2',
   },
   inputLabel: {
     fontSize: 14,
@@ -111,7 +94,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   loginButton: {
-    backgroundColor: '#27ae60',
+    backgroundColor: '#00b5b2',
     borderRadius: 5,
     paddingVertical: 12,
     paddingHorizontal: 20,
@@ -127,7 +110,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   CadastroButtonText: {
-    color: 'black',
+    color: '#000',
     fontSize: 10,
     textAlign: 'center',
   },

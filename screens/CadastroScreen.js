@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ImageBackground} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const CadastroScreen = () => {
@@ -20,18 +20,21 @@ const CadastroScreen = () => {
         <View style={styles.bodyContainer}>
         <View style={styles.CadastroContainer}>
           <View style={styles.CadastroCard}>
-            <Text style={styles.CadastroTitle}>Cadastro</Text>
+            <Text style={styles.CadastroTitle}>Faça seu Cadastro</Text>
           <View style={styles.inputWrapper}>
-           <TextInput style={styles.inputField} placeholder="username" />
+           <TextInput style={styles.inputField} placeholder="Usuario" />
           </View>
             <View style={styles.inputWrapper}>
               <TextInput style={styles.inputField} placeholder="Email" />
             </View>
          <View style={styles.inputWrapper}>
-           <TextInput style={styles.inputField} placeholder="password" />
+           <TextInput style={styles.inputField} placeholder="Senha" />
          </View>
          <View style={styles.inputWrapper}>
-           <TextInput style={styles.inputField} placeholder="confirm password" secureTextEntry />
+           <TextInput style={styles.inputField} placeholder="Confirmar Senha" secureTextEntry />
+         </View>
+         <View style={styles.inputWrapper}>
+           <TextInput style={styles.inputField} placeholder="Possui Prescrição Médica?" secureTextEntry />
          </View>
          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
            <Text style={styles.loginButtonText}>Login</Text>
@@ -48,11 +51,6 @@ const CadastroScreen = () => {
      justifyContent: 'center',
      alignItems: 'center',
    },
-   profileImage: {
-     justifyContent: 'center',
-     alignItems: 'center',
-     marginBottom: 20,
-   },
    inputWrapper:{
     fontStyle:"italic",
    },
@@ -61,19 +59,6 @@ const CadastroScreen = () => {
     alignContent: 'center',
     height: '90%',
     width: '100%',
-   },
-   roundedImage: {
-     width: 120,
-     height: 120,
-     borderRadius: 60,
-     shadowColor: '#000',
-     shadowOffset: { width: 0, height: 4 },
-     shadowOpacity: 0.2,
-     shadowRadius: 10,
-   },
-   ImageBackground: {
-    flex:1,
-    resizeMode: 'cover'
    },
    CadastroCard: {
      backgroundColor: 'white',
@@ -91,7 +76,7 @@ const CadastroScreen = () => {
      marginBottom: 20,
      borderRadius: 10,
      textAlign: 'center',
-     color: '#333',
+     color: '#00b5b2',
    },
    inputLabel: {
      fontSize: 14,
@@ -107,14 +92,10 @@ const CadastroScreen = () => {
      marginBottom: 15,
    },
    loginButton: {
-     backgroundColor: '#27ae60',
+     backgroundColor: '#00b5b2',
      borderRadius: 5,
      paddingVertical: 12,
      paddingHorizontal: 20,
-   },
-   ImageBackground: {
-    height: '100%',
-    width: '100%'
    },
    loginButtonText: {
      color: '#fff',
