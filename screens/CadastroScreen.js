@@ -33,8 +33,16 @@ const CadastroScreen = () => {
          <View style={styles.inputWrapper}>
            <TextInput style={styles.inputField} placeholder="Confirmar Senha" secureTextEntry />
          </View>
+         {/* <View>
+        <CheckBox
+          value={isSelected}
+          onValueChange={setSelection}
+          style={styles.checkbox}
+        />
+        <Text style={styles.label}>Possui Problema Físico?</Text>
+      </View> */}
          <View style={styles.inputWrapper}>
-           <TextInput style={styles.inputField} placeholder="Possui Prescrição Médica?" secureTextEntry />
+           <TextInput style={styles.inputField} placeholder="Prescrição Médica(Caso tenha)" />
          </View>
          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
            <Text style={styles.loginButtonText}>Login</Text>
@@ -102,7 +110,10 @@ const CadastroScreen = () => {
      fontSize: 16,
      textAlign: 'center',
    },
-   
+    checkboxContainer: {
+      flexDirection: "row",
+      marginBottom: 20,
+    },
  });
 
  export default CadastroScreen;

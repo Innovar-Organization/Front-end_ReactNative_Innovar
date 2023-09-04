@@ -1,21 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput} from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
+import HorariosBloqueadosList from './HorariosBloqueadosList';
 
 const HomeScreen = () => {
   return (
-    <View style={styles.bodyContainer}>
-
-        <View style={styles.container}>
-          <Text>Tela Inicial</Text>
-          <View style={styles.menu}>
-            </View>
-          </View>
-
+    <View style={styles.container}>
+      <Text>Tela Inicial</Text>
+      <HorariosBloqueadosList /> 
     </View>
-
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
