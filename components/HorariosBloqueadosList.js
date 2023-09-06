@@ -6,8 +6,7 @@ const HorariosBloqueadosList = () => {
   const [horariosBloqueados, setHorariosBloqueados] = useState([]);
 
   useEffect(() => {
-    // Faça uma solicitação ao seu backend para buscar os horários bloqueados
-    axios.get('URL_DO_SEU_BACKEND/horariosbloqueados')
+    axios.get('http://127.0.0.1:19003/admin/innovar/horariobloqueado/')
       .then(response => {
         setHorariosBloqueados(response.data);
       })
@@ -21,7 +20,7 @@ const HorariosBloqueadosList = () => {
       <Text>Horários Bloqueados</Text>
       <FlatList
         data={horariosBloqueados}
-        keyExtractor={(item) => item.id.toString()} // Use a chave única do seu modelo
+        keyExtractor={(item) => item.id.toString()} 
         renderItem={({ item }) => (
           <View style={styles.horarioItem}>
             <Text>{item.dia}</Text>
