@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet} from 'react-native';
-import HorariosBloqueadosList from '/home/wedley.schmoeller/Documentos/wedley/frontend-innovar-react-native/components/HorariosBloqueadosList.js';
 
+import HorariosBloqueadosList from '../components/HorariosBloqueadosList';
 
 const HomeScreen = () => {
   return (
