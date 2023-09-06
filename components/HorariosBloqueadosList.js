@@ -6,7 +6,8 @@ const HorariosBloqueadosList = () => {
   const [horariosBloqueados, setHorariosBloqueados] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:19003/admin/innovar/horariobloqueado/')
+    // axios.get('http://(ip-da-maquina):19003/horarios_bloqueados/')
+    axios.get('http://192.168.0.10:19003/horarios_bloqueados/')
       .then(response => {
         setHorariosBloqueados(response.data);
       })
