@@ -54,7 +54,8 @@ const LoginScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  loginContainer: {
+
+    loginContainer: {
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: '80%',
     width: '100%',
+    backgroundColor: '#00b5b2', 
   },
   loginCard: {
     backgroundColor: '#fff',

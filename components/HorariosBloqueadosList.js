@@ -6,8 +6,7 @@ const HorariosBloqueadosList = () => {
   const [horariosBloqueados, setHorariosBloqueados] = useState([]);
 
   useEffect(() => {
-    // axios.get('http://(ip-da-maquina):19003/horarios_bloqueados/')
-    axios.get('http://192.168.0.10:19003/horarios_bloqueados/')
+    axios.get('http://127.0.0.1:19003/horarios_bloqueados/')
       .then(response => {
         setHorariosBloqueados(response.data);
       })
@@ -18,7 +17,8 @@ const HorariosBloqueadosList = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Horários Bloqueados</Text>
+      <Text><h2>Confira os horários e entre em contato!</h2></Text>
+      <Text>Os Horários Indisponíveis:</Text>
       <FlatList
         data={horariosBloqueados}
         keyExtractor={(item) => item.id.toString()} 
@@ -36,7 +36,7 @@ const HorariosBloqueadosList = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#00b5b2',
     paddingHorizontal: 20,
   },
   horarioItem: {
