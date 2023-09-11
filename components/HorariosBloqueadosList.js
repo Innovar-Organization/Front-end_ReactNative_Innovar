@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, FlatList, ScrollView, Dimensions } from 'react-native';
 import axios from 'axios';
 
 const HorariosBloqueadosList = () => {
@@ -15,13 +15,15 @@ const HorariosBloqueadosList = () => {
       });
   }, []);
 
+  const windowWidth = Dimensions.get('window').width;
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View>
         <Text style={styles.title}>Confira os horários e entre em contato!</Text>
         <Text style={styles.subtitle}>Horários Indisponíveis:</Text>
       </View>
-      <ScrollView style={styles.scroll}>
+      <ScrollView style={[styles.scroll, { width: windowWidth * 0.9 }]}>
         <FlatList
           data={horariosBloqueados}
           keyExtractor={(item) => item.id.toString()} 
@@ -42,12 +44,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#00b5b2',
     alignItems: 'center', 
-    paddingTop: 20,
+    paddingTop: '5%',
   },
   scroll: {
-    maxHeight: 500, 
-    width:500,
-
+    flex: 1,
+    maxHeight: 500,
   },
   title: {
     fontSize: 24,

@@ -6,7 +6,6 @@ import HorariosBloqueadosList from '../components/HorariosBloqueadosList';
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Tela Inicial</Text>
       <HorariosBloqueadosList /> 
     </View>
   );

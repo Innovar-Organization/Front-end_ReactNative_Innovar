@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   bodyContainer: {
     justifyContent: 'center',
     alignContent: 'center',
-    height: '90%',
+    height: '100%',
     width: '100%',
     backgroundColor: '#B8B8B8',
   },
