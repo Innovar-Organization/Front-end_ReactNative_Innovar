@@ -95,6 +95,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor: '#00b5b2', // Cor ciano para a borda
+    borderWidth: 2, // Largura da borda
   },
   inputWrapper: {
     fontStyle: "italic",
@@ -116,13 +118,16 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
     padding: 30,
     width: 350,
+    borderColor: '#00b5b2', // Cor ciano para a borda
+    borderWidth: 2, // Largura da borda
+    
   },
   CadastroTitle: {
     fontSize: 28,
     marginBottom: 20,
     borderRadius: 10,
     textAlign: 'center',
-    color: '#00b5b2',
+    color: '#000',
   },
   inputLabel: {
     fontSize: 14,
@@ -136,6 +141,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     borderRadius: 5,
     marginBottom: 15,
+    borderColor: '#00b5b2', // Cor ciano para a borda
+    borderWidth: 2, // Largura da borda
   },
   loginButton: {
     backgroundColor: '#00b5b2',

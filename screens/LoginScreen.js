@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
     fontSize: 28,
     marginBottom: 20,
     textAlign: 'center',
-    color: '#00b5b2',
   },
   inputLabel: {
     fontSize: 14,
