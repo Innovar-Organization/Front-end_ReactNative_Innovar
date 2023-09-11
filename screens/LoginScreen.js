@@ -61,13 +61,14 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     justifyContent: 'center',
-    height: '80%',
+    height: '100%',
     width: '100%',
-    backgroundColor: '#00b5b2', 
+    backgroundColor: '#B8B8B8', 
   },
   loginCard: {
     backgroundColor: '#fff',
-    borderColor: '#D0FFF1',
+    borderColor: '#00b5b2', // Cor ciano
+    borderWidth: 2, // Largura da borda
     borderRadius: 10,
     shadowColor: '#D0FFF1',
     shadowOffset: { width: 0, height: 10 },
@@ -94,6 +95,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     borderRadius: 5,
     marginBottom: 15,
+    borderColor: '#00b5b2', // Cor ciano para a borda
+    borderWidth: 2, // Largura da borda
   },
   loginButton: {
     backgroundColor: '#00b5b2',

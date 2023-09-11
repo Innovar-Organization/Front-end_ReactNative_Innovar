@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     height: '90%',
     width: '100%',
-    backgroundColor: '#00b5b2',
+    backgroundColor: '#B8B8B8',
   },
   CadastroCard: {
     backgroundColor: 'white',
