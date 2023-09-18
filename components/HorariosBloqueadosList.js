@@ -6,11 +6,12 @@ const HorariosBloqueadosList = () => {
   const [horariosBloqueados, setHorariosBloqueados] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:19003/horarios_bloqueados/')
-      .then(response => {
+    axios
+      .get('http://127.0.0.1:19003/horarios_bloqueados/')
+      .then((response) => {
         setHorariosBloqueados(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Erro ao buscar os horários bloqueados:', error);
       });
   }, []);
@@ -26,7 +27,7 @@ const HorariosBloqueadosList = () => {
       <ScrollView style={[styles.scroll, { width: windowWidth * 0.9 }]}>
         <FlatList
           data={horariosBloqueados}
-          keyExtractor={(item) => item.id.toString()} 
+          keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <View style={styles.horarioItem}>
               <Text style={styles.diaText}>{item.dia}</Text>
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#00b5b2',
-    alignItems: 'center', 
+    alignItems: 'center',
     paddingTop: '5%',
   },
   scroll: {
@@ -55,25 +56,27 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
     marginBottom: 10,
-    textAlign: 'center', 
+    textAlign: 'center',
   },
   subtitle: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
     marginBottom: 10,
-    textAlign: 'center', 
+    textAlign: 'center',
   },
   horarioItem: {
     marginBottom: 10,
     padding: 10,
     backgroundColor: '#fff',
     borderRadius: 5,
+    width: '100%', 
   },
   diaText: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#333',
+    marginBottom: 5,
   },
   horaText: {
     fontSize: 14,
