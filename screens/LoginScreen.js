@@ -22,11 +22,12 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.bodyContainer}>
-      <Image
+     <Image
         source={{ uri: 'http://127.0.0.1:19003/media/images/5dc02292-7520-400e-b45b-dd4ceb9790bb.png' }}
         style={styles.backgroundImage}
         resizeMode="contain"
       />
+
       <View style={styles.loginContainer}>
         <View style={styles.loginCard}>
           <Text style={styles.loginTitle}>Entre na sua Conta</Text>
