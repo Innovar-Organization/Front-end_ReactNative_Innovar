@@ -23,7 +23,7 @@ const LoginScreen = () => {
   return (
     <View style={styles.bodyContainer}>
      <Image
-        source={{ uri: 'http://127.0.0.1:19003/media/images/5dc02292-7520-400e-b45b-dd4ceb9790bb.png' }}
+        source={{ uri: 'http://191.52.55.170:19003/media/images/5dc02292-7520-400e-b45b-dd4ceb9790bb.png' }}
         style={styles.backgroundImage}
         resizeMode="contain"
       />
@@ -54,14 +54,14 @@ const styles = StyleSheet.create({
   bodyContainer: {
     flex: 1,
     backgroundColor: '#B8B8B8',
-    alignItems: 'center', // Alinha o conteúdo ao centro verticalmente
-    justifyContent: 'flex-start', // Alinha o conteúdo ao topo da tela
+    alignItems: 'center', 
+    justifyContent: 'flex-start',
   },
   backgroundImage: {
     width: 300,
     height: 250,
     resizeMode: 'cover',
-    marginTop: 50, // Espaço do topo da tela
+    marginBottom: 10,
   },
   loginContainer: {
     flex: 1,
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
     padding: 30,
     width: 350,
+    marginBottom: 90,
   },
   loginTitle: {
     fontSize: 28,
