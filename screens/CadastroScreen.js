@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, CheckBox } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, CheckBox, Alert } from 'react-native';
+import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
+
+const BASE_URL = 'http://191.52.55.170:19003/';
 
 const CadastroScreen = () => {
   const navigation = useNavigation();
@@ -9,80 +12,86 @@ const CadastroScreen = () => {
   const [possuiProblemaRespiratorio, setPossuiProblemaRespiratorio] = useState(false);
   const [possuiAlergia, setPossuiAlergia] = useState(false);
   const [senha, setSenha] = useState('');
+  const [usuario, setUsuario] = useState('');
+  const [nome, setNome] = useState('');
+  const [sobrenome, setSobrenome] = useState('');
+  const [cpf, setCPF] = useState('');
+  const [cpfValido, setCPFValido] = useState(false);
 
-  const handleCPFChange = (text) => {
-    setCPF(text);
-    const cpfRegex = /^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/;
-
-    if (cpfRegex.test(text)) {
-      setCPFValido(true);
-    } else {
-      setCPFValido(false);
-    }
-  };
-
-  const handleLogin = () => {
+  const handleCadastro = async () => {
     if (!cpfValido) {
-      alert('CPF inválido. Por favor, insira um CPF válido.');
+      Alert.alert('CPF inválido', 'Por favor, insira um CPF válido.');
       return;
     }
+
+    // Crie um objeto com os dados do usuário para enviar ao backend
+    const userData = {
+      usuario,
+      nome,
+      sobrenome,
+      cpf,
+      possuiProblemaFisico,
+      possuiProblemaCardiaco,
+      possuiProblemaRespiratorio,
+      possuiAlergia,
+      senha,
+    };
+
+    try {
+      const response = await axios.post(BASE_URL + 'usuarios/', userData);
+
+      if (response.status === 201) {
+        Alert.alert('Cadastro bem-sucedido', 'Seu cadastro foi realizado com sucesso.');
+
+        // Redirecionar para a tela de login após o cadastro
+        navigation.navigate('LoginScreen');
+      }
+    } catch (error) {
+      console.error('Erro ao cadastrar usuário:', error);
+      Alert.alert('Erro ao cadastrar', 'Ocorreu um erro ao cadastrar o usuário. Tente novamente mais tarde.');
+    }
   };
+
   return (
     <View style={styles.bodyContainer}>
       <View style={styles.CadastroContainer}>
         <View style={styles.CadastroCard}>
           <Text style={styles.CadastroTitle}>Faça seu Cadastro</Text>
           <View style={styles.inputWrapper}>
-            <TextInput style={styles.inputField} placeholder="Usuario" />
-          </View>
-          <View style={styles.inputWrapper}>
-            <TextInput style={styles.inputField} placeholder="Nome" />
-          </View>
-          <View style={styles.inputWrapper}>
-            <TextInput style={styles.inputField} placeholder="Sobrenome" />
-          </View>
-          <View style={styles.inputWrapper}>
-            <TextInput style={styles.inputField} placeholder="CPF" />
-          </View>
-          <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={possuiProblemaFisico}
-              onValueChange={setPossuiProblemaFisico}
+            <TextInput
+              style={styles.inputField}
+              placeholder="Usuário"
+              onChangeText={text => setUsuario(text)}
             />
-            <Text style={styles.label}>Tenho Problema Físico</Text>
-          </View>
-          <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={possuiProblemaCardiaco}
-              onValueChange={setPossuiProblemaCardiaco}
-            />
-            <Text style={styles.label}>Tenho Problema Cardíaco</Text>
-          </View>
-          <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={possuiProblemaRespiratorio}
-              onValueChange={setPossuiProblemaRespiratorio}
-            />
-            <Text style={styles.label}>Tenho Problema Respiratório</Text>
-          </View>
-          <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={possuiAlergia}
-              onValueChange={setPossuiAlergia}
-            />
-            <Text style={styles.label}>Tenho Alergia</Text>
           </View>
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.inputField}
-              placeholder="Senha"
-              secureTextEntry
-              value={senha}
-              onChangeText={(text) => setSenha(text)}
+              placeholder="Nome"
+              onChangeText={text => setNome(text)}
             />
           </View>
-          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-            <Text style={styles.loginButtonText}>Login</Text>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.inputField}
+              placeholder="Sobrenome"
+              onChangeText={text => setSobrenome(text)}
+            />
+          </View>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.inputField}
+              placeholder="CPF"
+              onChangeText={text => {
+                setCPF(text);
+                const cpfRegex = /^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/;
+                setCPFValido(cpfRegex.test(text));
+              }}
+            />
+          </View>
+          {/* ... Resto do formulário */}
+          <TouchableOpacity style={styles.loginButton} onPress={handleCadastro}>
+            <Text style={styles.loginButtonText}>Cadastrar</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -95,8 +104,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#00b5b2', // Cor ciano para a borda
-    borderWidth: 2, // Largura da borda
+    borderColor: '#00b5b2',
+    borderWidth: 2,
   },
   inputWrapper: {
     fontStyle: "italic",
