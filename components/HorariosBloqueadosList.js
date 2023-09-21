@@ -7,7 +7,7 @@ const HorariosBloqueadosList = () => {
 
   useEffect(() => {
     axios
-      .get('http://191.52.55.170:19003/horarios_bloqueados/')
+      .get('http://localhost:19000/horarios_bloqueados/')
       .then((response) => {
         setHorariosBloqueados(response.data);
       })

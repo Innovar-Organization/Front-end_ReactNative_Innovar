@@ -1,6 +1,7 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native'; // Importe Image e Dimensions
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Dimensions, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -20,10 +21,11 @@ const LoginScreen = () => {
     navigation.navigate('Cadastro');
   };
 
+
   return (
     <View style={styles.bodyContainer}>
-     <Image
-        source={{ uri: 'http://191.52.55.170:19003/media/images/5dc02292-7520-400e-b45b-dd4ceb9790bb.png' }}
+      <Image
+        source={{ uri: 'http://localhost:19000/media/images/5dc02292-7520-400e-b45b-dd4ceb9790bb.png' }}
         style={styles.backgroundImage}
         resizeMode="contain"
       />
@@ -31,12 +33,17 @@ const LoginScreen = () => {
       <View style={styles.loginContainer}>
         <View style={styles.loginCard}>
           <Text style={styles.loginTitle}>Entre na sua Conta</Text>
-          <View style={styles.inputWrapper}>
-            <TextInput style={styles.inputField} placeholder="Usuário" />
-          </View>
-          <View style={styles.inputWrapper}>
-            <TextInput style={styles.inputField} placeholder="Senha" secureTextEntry />
-          </View>
+          <TextInput
+            style={styles.inputField}
+            placeholder="Usuário"
+            onChangeText={(text) => setUsername(text)}
+          />
+          <TextInput
+            style={styles.inputField}
+            placeholder="Senha"
+            secureTextEntry
+            onChangeText={(text) => setPassword(text)}
+          />
           <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
             <Text style={styles.loginButtonText}>Entrar</Text>
           </TouchableOpacity>
@@ -108,16 +115,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   CadastroButton: {
-    borderRadius: 5,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
+    marginTop: 20, // Espaçamento superior para separar o botão de login do botão de cadastro
   },
   CadastroButtonText: {
-    color: '#000',
-    fontSize: 10,
+    color: '#00b5b2',
+    fontSize: 16,
     textAlign: 'center',
   },
 });
-
 
 export default LoginScreen;

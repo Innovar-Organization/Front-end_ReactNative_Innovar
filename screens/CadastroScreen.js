@@ -1,30 +1,64 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, CheckBox, Alert } from 'react-native';
-import axios from 'axios';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  CheckBox,
+  Alert,
+} from "react-native";
+import axios from "axios";
 
-const BASE_URL = 'http://191.52.55.170:19003/';
+const BASE_URL = "http://localhost:19003/";
 
 const CadastroScreen = () => {
   const navigation = useNavigation();
   const [possuiProblemaFisico, setPossuiProblemaFisico] = useState(false);
   const [possuiProblemaCardiaco, setPossuiProblemaCardiaco] = useState(false);
-  const [possuiProblemaRespiratorio, setPossuiProblemaRespiratorio] = useState(false);
+  const [possuiProblemaRespiratorio, setPossuiProblemaRespiratorio] =useState(false);
   const [possuiAlergia, setPossuiAlergia] = useState(false);
-  const [senha, setSenha] = useState('');
-  const [usuario, setUsuario] = useState('');
-  const [nome, setNome] = useState('');
-  const [sobrenome, setSobrenome] = useState('');
-  const [cpf, setCPF] = useState('');
+  const [senha, setSenha] = useState("");
+  const [usuario, setUsuario] = useState("");
+  const [nome, setNome] = useState("");
+  const [dataNascimento, setDataNascimento] = useState("");
+  const [numeroTelefone, setNumeroTelefone] = useState("");
+  const [sobrenome, setSobrenome] = useState("");
+  const [cpf, setCPF] = useState("");
+  const [prescricaoMedica, setPrescricaoMedica] = useState("");
   const [cpfValido, setCPFValido] = useState(false);
 
   const handleCadastro = async () => {
     if (!cpfValido) {
-      Alert.alert('CPF inválido', 'Por favor, insira um CPF válido.');
+      Alert.alert("CPF inválido", "Por favor, insira um CPF válido.");
       return;
     }
 
-    // Crie um objeto com os dados do usuário para enviar ao backend
+    if (!isValidDateOfBirth(dataNascimento)) {
+      Alert.alert(
+        "Data de Nascimento inválida",
+        "Por favor, insira uma data de nascimento válida."
+      );
+      return;
+    }
+
+    if (!isValidPhoneNumber(numeroTelefone)) {
+      Alert.alert(
+        "Número de Telefone inválido",
+        "Por favor, insira um número de telefone válido."
+      );
+      return;
+    }
+
+    if (prescricaoMedica.length > 200) {
+      Alert.alert(
+        "Prescrição Médica muito longa",
+        "A prescrição médica deve conter no máximo 200 caracteres."
+      );
+      return;
+    }
+
     const userData = {
       usuario,
       nome,
@@ -35,21 +69,38 @@ const CadastroScreen = () => {
       possuiProblemaRespiratorio,
       possuiAlergia,
       senha,
+      prescricaoMedica,
     };
 
     try {
-      const response = await axios.post(BASE_URL + 'usuarios/', userData);
+      const response = await axios.post(BASE_URL + "usuarios/", userData);
 
       if (response.status === 201) {
-        Alert.alert('Cadastro bem-sucedido', 'Seu cadastro foi realizado com sucesso.');
+        Alert.alert(
+          "Cadastro bem-sucedido",
+          "Seu cadastro foi realizado com sucesso."
+        );
 
         // Redirecionar para a tela de login após o cadastro
-        navigation.navigate('LoginScreen');
+        navigation.navigate("LoginScreen");
       }
     } catch (error) {
-      console.error('Erro ao cadastrar usuário:', error);
-      Alert.alert('Erro ao cadastrar', 'Ocorreu um erro ao cadastrar o usuário. Tente novamente mais tarde.');
+      console.error("Erro ao cadastrar usuário:", error);
+      Alert.alert(
+        "Erro ao cadastrar",
+        "Ocorreu um erro ao cadastrar o usuário. Tente novamente mais tarde."
+      );
     }
+  };
+
+  const isValidDateOfBirth = (dateOfBirth) => {
+    // Implemente a lógica de validação da data de nascimento aqui
+    return true; // Substitua por sua própria lógica de validação
+  };
+
+  const isValidPhoneNumber = (phoneNumber) => {
+    // Implemente a lógica de validação do número de telefone aqui
+    return true; // Substitua por sua própria lógica de validação
   };
 
   return (
@@ -61,37 +112,101 @@ const CadastroScreen = () => {
             <TextInput
               style={styles.inputField}
               placeholder="Usuário"
-              onChangeText={text => setUsuario(text)}
+              onChangeText={(text) => setUsuario(text)}
             />
           </View>
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.inputField}
               placeholder="Nome"
-              onChangeText={text => setNome(text)}
+              onChangeText={(text) => setNome(text)}
             />
           </View>
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.inputField}
               placeholder="Sobrenome"
-              onChangeText={text => setSobrenome(text)}
+              onChangeText={(text) => setSobrenome(text)}
+            />
+          </View>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.inputField}
+              placeholder="Data de Nascimento (Dia/Mês/Ano)"
+              onChangeText={(text) => setDataNascimento(text)}
+            />
+          </View>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.inputField}
+              placeholder="Número de Telefone"
+              onChangeText={(text) => setNumeroTelefone(text)}
             />
           </View>
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.inputField}
               placeholder="CPF"
-              onChangeText={text => {
+              onChangeText={(text) => {
                 setCPF(text);
                 const cpfRegex = /^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/;
                 setCPFValido(cpfRegex.test(text));
               }}
             />
           </View>
-          {/* ... Resto do formulário */}
-          <TouchableOpacity style={styles.loginButton} onPress={handleCadastro}>
-            <Text style={styles.loginButtonText}>Cadastrar</Text>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.inputField}
+              placeholder="Prescrição Médica"
+              onChangeText={(text) => setPrescricaoMedica(text)}
+            />
+          </View>
+          <View style={styles.checkboxContainer}>
+            <CheckBox
+              value={possuiProblemaFisico}
+              onValueChange={setPossuiProblemaFisico}
+            />
+            <Text style={styles.label}>Possui Problema Físico</Text>
+          </View>
+          <View style={styles.checkboxContainer}>
+            <CheckBox
+              value={possuiProblemaCardiaco}
+              onValueChange={setPossuiProblemaCardiaco}
+            />
+            <Text style={styles.label}>Possui Problema Cardíaco</Text>
+          </View>
+          <View style={styles.checkboxContainer}>
+            <CheckBox
+              value={possuiProblemaRespiratorio}
+              onValueChange={setPossuiProblemaRespiratorio}
+            />
+            <Text style={styles.label}>Possui Problema Respiratório</Text>
+          </View>
+          <View style={styles.checkboxContainer}>
+            <CheckBox value={possuiAlergia} onValueChange={setPossuiAlergia} />
+            <Text style={styles.label}>Possui Alergia</Text>
+          </View>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.inputField}
+              placeholder="Senha"
+              secureTextEntry
+              onChangeText={(text) => setSenha(text)}
+            />
+          </View>
+          <TouchableOpacity
+            style={styles.cadastroButton}
+            onPress={handleCadastro}
+          >
+            <Text style={styles.cadastroButtonText}>Cadastrar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => navigation.navigate("LoginScreen")} // Navegue para a tela de login
+          >
+            <Text style={styles.loginButtonText}>
+              Já possui conta? Faça login aqui
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -100,72 +215,68 @@ const CadastroScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  bodyContainer: {
+    justifyContent: "center",
+    alignContent: "center",
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#B8B8B8",
+  },
   CadastroContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: '#00b5b2',
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#00b5b2",
     borderWidth: 2,
   },
-  inputWrapper: {
-    fontStyle: "italic",
-  },
-  bodyContainer: {
-    justifyContent: 'center',
-    alignContent: 'center',
-    height: '100%',
-    width: '100%',
-    backgroundColor: '#B8B8B8',
-  },
   CadastroCard: {
-    backgroundColor: 'white',
-    borderColor: 'black',
+    backgroundColor: "white",
+    borderColor: "black",
     borderRadius: 10,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.1,
     shadowRadius: 20,
     padding: 30,
     width: 350,
-    borderColor: '#00b5b2', // Cor ciano para a borda
-    borderWidth: 2, // Largura da borda
-    
+    borderColor: "#00b5b2",
+    borderWidth: 2,
   },
   CadastroTitle: {
     fontSize: 28,
     marginBottom: 20,
     borderRadius: 10,
-    textAlign: 'center',
-    color: '#000',
+    textAlign: "center",
+    color: "#000",
   },
   inputLabel: {
     fontSize: 14,
     marginBottom: 5,
-    color: '#666',
+    color: "#666",
   },
   inputField: {
-    width: '100%',
+    width: "100%",
     padding: 12,
     fontSize: 16,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: "#f9f9f9",
     borderRadius: 5,
     marginBottom: 15,
-    borderColor: '#00b5b2', // Cor ciano para a borda
-    borderWidth: 2, // Largura da borda
+    borderColor: "#00b5b2",
+    borderWidth: 2,
   },
-  loginButton: {
-    backgroundColor: '#00b5b2',
+  cadastroButton: {
+    backgroundColor: "#00b5b2",
     borderRadius: 5,
     paddingVertical: 12,
     paddingHorizontal: 20,
   },
   inputTextBold: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
-  loginButtonText: {
-    color: '#fff',
+  cadastroButtonText: {
+    color: "#fff",
     fontSize: 16,
-    textAlign: 'center',
+    textAlign: "center",
   },
   checkboxContainer: {
     flexDirection: "row",
@@ -175,7 +286,15 @@ const styles = StyleSheet.create({
   label: {
     marginLeft: 8,
     fontSize: 16,
-    color: '#666',
+    color: "#666",
+  },
+  loginButton: {
+    marginTop: 20, // Espaçamento superior para separar o botão de cadastro do botão de login
+  },
+  loginButtonText: {
+    color: "#00b5b2",
+    fontSize: 16,
+    textAlign: "center",
   },
 });
 
