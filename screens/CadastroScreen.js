@@ -17,7 +17,8 @@ const CadastroScreen = () => {
   const navigation = useNavigation();
   const [possuiProblemaFisico, setPossuiProblemaFisico] = useState(false);
   const [possuiProblemaCardiaco, setPossuiProblemaCardiaco] = useState(false);
-  const [possuiProblemaRespiratorio, setPossuiProblemaRespiratorio] =useState(false);
+  const [possuiProblemaRespiratorio, setPossuiProblemaRespiratorio] =
+    useState(false);
   const [possuiAlergia, setPossuiAlergia] = useState(false);
   const [senha, setSenha] = useState("");
   const [usuario, setUsuario] = useState("");
@@ -93,14 +94,19 @@ const CadastroScreen = () => {
     }
   };
 
-  const isValidDateOfBirth = (dateOfBirth) => {
-    // Implemente a lógica de validação da data de nascimento aqui
-    return true; // Substitua por sua própria lógica de validação
+  const isValidPhoneNumber = (phoneNumber) => {
+    const numericPhoneNumber = phoneNumber.replace(/\D/g, "");
+    return numericPhoneNumber.length === 10;
   };
 
-  const isValidPhoneNumber = (phoneNumber) => {
-    // Implemente a lógica de validação do número de telefone aqui
-    return true; // Substitua por sua própria lógica de validação
+  const isValidDateOfBirth = (dateOfBirth) => {
+    const dobDate = new Date(dateOfBirth);
+    if (isNaN(dobDate.getTime())) {
+      return false;
+    }
+    const today = new Date();
+    const age = today.getFullYear() - dobDate.getFullYear();
+    return age >= 13 && age <= 100;
   };
 
   return (
