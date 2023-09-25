@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet} from 'react-native';
-
+import { View, StyleSheet} from 'react-native';
 import HorariosBloqueadosList from '../components/HorariosBloqueadosList';
+import SlideShow from '../components/SlideShow';
 
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <HorariosBloqueadosList /> 
+      <SlideShow />
     </View>
   );
 };
