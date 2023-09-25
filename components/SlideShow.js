@@ -15,7 +15,7 @@ const HomeScreen = () => {
   React.useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000);
+    }, 2500);
 
     return () => {
       clearInterval(timer);
@@ -23,20 +23,19 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.slideContainer}>
       <Image source={images[currentImageIndex]} style={styles.image} resizeMode="contain" />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  slideContainer: {
     flex: 1,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#00b5b2',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '200px',
-    width: '300px',
+  
   },
   image: {
     width: null,
