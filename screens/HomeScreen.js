@@ -6,16 +6,19 @@ import SlideShow from '../components/SlideShow';
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <HorariosBloqueadosList /> 
-      <SlideShow />
+      <HorariosBloqueadosList />
+      <h2>Promoções</h2>
+      <SlideShow /> 
     </View>
+      
+
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#00b5b2',
     display:'flex',
   },
   content: {
