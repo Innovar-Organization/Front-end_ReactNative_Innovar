@@ -1,5 +1,5 @@
-import React from "react";
-import { View, StyleSheet, Image, Dimensions } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Image, Dimensions, Text } from "react-native";
 
 const HomeScreen = () => {
   const imageUris = [
@@ -9,31 +9,54 @@ const HomeScreen = () => {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRWwAZOlhJOXEOKYfKqEPhv1YTzg7R3fHGVA&usqp=CAU",
   ];
 
-  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageWidth, setImageWidth] = useState(Dimensions.get("window").width);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageUris.length);
     }, 2500);
 
+    const updateImageWidth = () => {
+      setImageWidth(Dimensions.get("window").width);
+    };
+
+    Dimensions.addEventListener("change", updateImageWidth);
+
     return () => {
       clearInterval(timer);
+      Dimensions.removeEventListener("change", updateImageWidth);
     };
   }, []);
 
   return (
-    <Image
-      source={{ uri: imageUris[currentImageIndex] }}
-      style={styles.image}
-      resizeMode="cover"
-    />
+    <View style={styles.slideContainer}>
+      <Text style={styles.title}>Acompanhe nossas promoções!</Text>
+      <Image
+        source={{ uri: imageUris[currentImageIndex] }}
+        style={{ width: imageWidth, height: (imageWidth / 16) * 9 }}
+        resizeMode="cover"
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  image: {
-    width: Dimensions.get("window").width, // Define a largura da imagem igual à largura da tela
-    height: 200, // Define a altura da imagem como 200px
+  slideContainer: {
+    flex: 1,
+    backgroundColor: "#00b5b2",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    color: "white",
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: "center", 
+    textAlignVertical: "center", 
+    flex: 1,
+    marginTop: -40,
+    marginBottom: 20,
   },
 });
 

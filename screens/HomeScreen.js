@@ -7,7 +7,6 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <HorariosBloqueadosList />
-      <h2>Promoções</h2>
       <SlideShow /> 
     </View>
       

@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   scroll: {
     flex: 1,
-    maxHeight: 500,
+    maxHeight: 450,
   },
   title: {
     fontSize: 24,
