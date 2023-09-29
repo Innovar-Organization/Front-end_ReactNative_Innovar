@@ -3,8 +3,8 @@ import { View, StyleSheet, Image, Dimensions, Text } from "react-native";
 
 const HomeScreen = () => {
   const imageUris = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_1LGn3b4u8E__peeZEkOZ97laJuXWUrfrQA&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-7hdGUXrLK70CdNlwP1Hq5Mkj__3ulS7-QA&usqp=CAU",
+    "http://localhost:19003/media/images/74b1df78-fb4f-4199-ba9c-283be1e8d9bc_NP8yzbH.png",
+    "http://localhost:19003/media/images/48f49e20-e03d-4f22-85ed-8feabe979961_b1e5unp.png",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6RxOUwg_EdqSDRwWVP5mhm08lCfaVBx1irQ&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRWwAZOlhJOXEOKYfKqEPhv1YTzg7R3fHGVA&usqp=CAU",
   ];
