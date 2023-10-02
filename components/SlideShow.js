@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Image, Dimensions, Text } from "react-native";
+import axios from 'axios';
 
 const HomeScreen = () => {
   const imageUris = [
     "http://localhost:19003/media/images/74b1df78-fb4f-4199-ba9c-283be1e8d9bc_NP8yzbH.png",
     "http://localhost:19003/media/images/48f49e20-e03d-4f22-85ed-8feabe979961_b1e5unp.png",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6RxOUwg_EdqSDRwWVP5mhm08lCfaVBx1irQ&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRWwAZOlhJOXEOKYfKqEPhv1YTzg7R3fHGVA&usqp=CAU",
+    "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
+    "http://localhost:19003/media/images/8d97f9dc-88d8-4903-a85f-cd03b8786cca.png",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -15,7 +16,7 @@ const HomeScreen = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageUris.length);
-    }, 2500);
+    }, 4000);
 
     const updateImageWidth = () => {
       setImageWidth(Dimensions.get("window").width);
@@ -34,7 +35,9 @@ const HomeScreen = () => {
       <Text style={styles.title}>Acompanhe nossas promoções!</Text>
       <Image
         source={{ uri: imageUris[currentImageIndex] }}
-        style={{ width: imageWidth, height: (imageWidth / 16) * 9 }}
+        style={{ 
+          width: "100%",
+          height: (imageWidth / 16) * 9 }}
         resizeMode="cover"
       />
     </View>
@@ -58,6 +61,7 @@ const styles = StyleSheet.create({
     marginTop: -40,
     marginBottom: 20,
   },
+
 });
 
 export default HomeScreen;
