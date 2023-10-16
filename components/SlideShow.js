@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Image, Dimensions, Text } from "react-native";
-import axios from 'axios';
+import { View, StyleSheet, Image, Dimensions, Text, ScrollView } from "react-native";
 
 const HomeScreen = () => {
   const imageUris = [
@@ -31,21 +30,59 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <View style={styles.slideContainer}>
+    <View style={styles.container}>
       <Text style={styles.title}>Acompanhe nossas promoções!</Text>
       <Image
         source={{ uri: imageUris[currentImageIndex] }}
-        style={{ 
+        style={{
           width: "100%",
-          height: (imageWidth / 16) * 9 }}
+          height: (imageWidth / 16) * 9,
+        }}
         resizeMode="cover"
       />
+      <SlideShow2 /> {/* Add the new slideshow component */}
+    </View>
+  );
+};
+
+const SlideShow2 = () => {
+  const imageUris2 = [
+  
+  ];
+
+  const [currentImageIndex2, setCurrentImageIndex2] = useState(0);
+
+  useEffect(() => {
+    const timer2 = setInterval(() => {
+      setCurrentImageIndex2((prevIndex) => (prevIndex + 1) % imageUris2.length);
+    }, 4000);
+
+    return () => {
+      clearInterval(timer2);
+    };
+  }, []);
+
+  return (
+    <View style={styles.slideContainer2}>
+      <ScrollView horizontal pagingEnabled>
+        {imageUris2.map((uri, index) => (
+          <Image
+            key={index}
+            source={{ uri }}
+            style={{
+              width: "100%",
+              height: (imageWidth / 16) * 9,
+            }}
+            resizeMode="cover"
+          />
+        ))}
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  slideContainer: {
+  container: {
     flex: 1,
     backgroundColor: "#00b5b2",
     justifyContent: "center",
@@ -55,13 +92,15 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 25,
     fontWeight: "bold",
-    textAlign: "center", 
-    textAlignVertical: "center", 
+    textAlign: "center",
+    textAlignVertical: "center",
     flex: 1,
     marginTop: -40,
     marginBottom: 20,
   },
-
+  slideContainer2: {
+    width: "100%",
+  },
 });
 
 export default HomeScreen;
