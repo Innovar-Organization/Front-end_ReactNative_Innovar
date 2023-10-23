@@ -40,43 +40,6 @@ const HomeScreen = () => {
         }}
         resizeMode="cover"
       />
-      <SlideShow2 /> {/* Add the new slideshow component */}
-    </View>
-  );
-};
-
-const SlideShow2 = () => {
-  const imageUris2 = [
-  
-  ];
-
-  const [currentImageIndex2, setCurrentImageIndex2] = useState(0);
-
-  useEffect(() => {
-    const timer2 = setInterval(() => {
-      setCurrentImageIndex2((prevIndex) => (prevIndex + 1) % imageUris2.length);
-    }, 4000);
-
-    return () => {
-      clearInterval(timer2);
-    };
-  }, []);
-
-  return (
-    <View style={styles.slideContainer2}>
-      <ScrollView horizontal pagingEnabled>
-        {imageUris2.map((uri, index) => (
-          <Image
-            key={index}
-            source={{ uri }}
-            style={{
-              width: "100%",
-              height: (imageWidth / 16) * 9,
-            }}
-            resizeMode="cover"
-          />
-        ))}
-      </ScrollView>
     </View>
   );
 };
@@ -97,9 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: -40,
     marginBottom: 20,
-  },
-  slideContainer2: {
-    width: "100%",
   },
 });
 
