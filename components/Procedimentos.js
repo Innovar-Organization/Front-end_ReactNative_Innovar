@@ -7,31 +7,31 @@ const HorizontalList = () => {
       id: 1,
       image:
         "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Texto 1",
+      text: "Limpeza de Pele",
     },
     {
       id: 2,
       image:
         "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Texto 2",
+      text: "Massagem Terapêutica",
     },
     {
       id: 3,
       image:
         "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Texto 3",
+      text: "Design de Sombrancelhas",
     },
     {
       id: 4,
       image:
         "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Texto 4",
+      text: "Massagem com Pedras Quentes",
     },
     {
       id: 5,
       image:
         "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Texto 5",
+      text: "Design de Cílios",
     },
     {
       id: 6,
@@ -46,7 +46,11 @@ const HorizontalList = () => {
       {items.map((item) => (
         <View key={item.id} style={styles.itemContainer}>
           <View style={styles.imageTextContainer}>
-            <Image source={{ uri: item.image }} style={styles.image} />
+            <Image
+              source={{ uri: item.image }}
+              style={styles.image}
+              resizeMode="contain"
+            />
             <Text style={styles.text}>{item.text}</Text>
           </View>
         </View>
@@ -83,15 +87,20 @@ const styles = StyleSheet.create({
   imageTextContainer: {
     backgroundColor: "#fff",
     borderRadius: 10,
-    padding: 20, 
+    alignItems: "center",
+    padding: 20,
+    maxHeight: 300,
+    maxWidth: 200,
+    height: 300,
   },
   image: {
-    width: 150, 
-    height: 150,
+    width: "100%",
+    aspectRatio: 1,
     borderRadius: 10,
   },
   text: {
     color: "black",
+    padding: 30,
     textAlign: "center",
     fontSize: 18,
   },
