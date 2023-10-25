@@ -3,7 +3,7 @@ import { View, StyleSheet} from 'react-native';
 import HorariosBloqueadosList from '../components/HorariosBloqueadosList';
 import SlideShow from '../components/SlideShow';
 import Procedimentos  from '../components/Procedimentos';
-import Contato from '../components/Contato'
+import Pacotes from '../components/Pacotes'
 import axios from 'axios';
 
 const HomeScreen = () => {
@@ -12,7 +12,7 @@ const HomeScreen = () => {
       <HorariosBloqueadosList />
       <SlideShow />
       <Procedimentos />
-      <Contato />
+      <Pacotes />
     </View>
       
 

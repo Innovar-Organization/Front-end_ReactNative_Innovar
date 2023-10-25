@@ -7,37 +7,37 @@ const HorizontalList = () => {
       id: 1,
       image:
         "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Limpeza de Pele",
+      text: "Pacote Limpeza de Pele",
     },
     {
       id: 2,
       image:
         "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Massagem Terapêutica",
+      text: "Pacote Massagem Terapêutica",
     },
     {
       id: 3,
       image:
         "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Design de Sombrancelhas",
+      text: "Pacote Design de Sombrancelhas",
     },
     {
       id: 4,
       image:
         "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Massagem com Pedras Quentes",
+      text: "Pacote Massagem com Pedras Quentes",
     },
     {
       id: 5,
       image:
         "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Design de Cílios",
+      text: "Pacote Design de Cílios",
     },
     {
       id: 6,
       image:
         "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Quiropraxia",
+      text: "Pacote Quiropraxia",
     },
   ];
 
@@ -62,7 +62,7 @@ const HorizontalList = () => {
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Escolha seu Procedimento:</Text>
+      <Text style={styles.title}>Assine seu Pacote:</Text>
       <HorizontalList />
     </View>
   );

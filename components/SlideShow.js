@@ -37,6 +37,7 @@ const HomeScreen = () => {
         style={{
           width: "100%",
           height: (imageWidth / 16) * 9,
+          marginBottom: 5,
         }}
         resizeMode="cover"
       />
@@ -56,10 +57,9 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold",
     textAlign: "center",
-    textAlignVertical: "center",
-    flex: 1,
-    marginTop: -40,
-    marginBottom: 20,
+    textAlignVertical: "center", 
+    marginBottom: 30,
+    flex: 0.2,
   },
 });
 

@@ -19,6 +19,7 @@ const HorariosBloqueadosList = () => {
   const windowWidth = Dimensions.get('window').width;
 
   return (
+    <View style={styles.firstContainer}>
     <ScrollView contentContainerStyle={styles.container}>
       <View>
         <Text style={styles.title}>Confira os horários e entre em contato!</Text>
@@ -37,10 +38,15 @@ const HorariosBloqueadosList = () => {
         />
       </ScrollView>
     </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  firstContainer: {
+    paddingBottom: 30,
+  },
+
   container: {
     flex: 1,
     backgroundColor: '#00b5b2',
@@ -50,6 +56,7 @@ const styles = StyleSheet.create({
   scroll: {
     flex: 1,
     maxHeight: 450,
+    
   },
   title: {
     fontSize: 24,
@@ -70,7 +77,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#fff',
     borderRadius: 5,
-    width: '100%', 
+
   },
   diaText: {
     fontSize: 16,
