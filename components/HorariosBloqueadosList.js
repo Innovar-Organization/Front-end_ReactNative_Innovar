@@ -19,13 +19,10 @@ const HorariosBloqueadosList = () => {
   const windowWidth = Dimensions.get('window').width;
 
   return (
-    <View style={styles.firstContainer}>
-    <ScrollView contentContainerStyle={styles.container}>
-      <View>
-        <Text style={styles.title}>Confira os horários e entre em contato!</Text>
-        <Text style={styles.subtitle}>Horários Indisponíveis:</Text>
-      </View>
-      <ScrollView style={[styles.scroll, { width: windowWidth * 0.9 }]}>
+    <View style={styles.container}>
+      <Text style={styles.title}>Confira os horários e entre em contato!</Text>
+      <Text style={styles.subtitle}>Horários Indisponíveis:</Text>
+      <ScrollView style={{ width: '90%' }}>
         <FlatList
           data={horariosBloqueados}
           keyExtractor={(item) => item.id.toString()}
@@ -37,26 +34,17 @@ const HorariosBloqueadosList = () => {
           )}
         />
       </ScrollView>
-    </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  firstContainer: {
-    paddingBottom: 30,
-  },
-
   container: {
     flex: 1,
     backgroundColor: '#00b5b2',
     alignItems: 'center',
     paddingTop: '5%',
-  },
-  scroll: {
-    flex: 1,
-    maxHeight: 450,
-    
+    paddingBottom: 30,
   },
   title: {
     fontSize: 24,
@@ -77,7 +65,6 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#fff',
     borderRadius: 5,
-
   },
   diaText: {
     fontSize: 16,
