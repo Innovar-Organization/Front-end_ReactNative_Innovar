@@ -1,70 +1,42 @@
-import React from "react";
-import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image, FlatList } from "react-native";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const HorizontalList = () => {
-  const items = [
-    {
-      id: 1,
-      image:
-        "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Pacote Limpeza de Pele",
-    },
-    {
-      id: 2,
-      image:
-        "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Pacote Massagem Terapêutica",
-    },
-    {
-      id: 3,
-      image:
-        "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Pacote Design de Sombrancelhas",
-    },
-    {
-      id: 4,
-      image:
-        "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Pacote Massagem com Pedras Quentes",
-    },
-    {
-      id: 5,
-      image:
-        "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Pacote Design de Cílios",
-    },
-    {
-      id: 6,
-      image:
-        "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-      text: "Pacote Quiropraxia",
-    },
-  ];
+
+const Pacotes = () => {
+  const [pacotes, setPacotes] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://127.0.0.1:19003/api/pacotes/")
+      .then(response => {
+        setPacotes(response.data);
+      })
+      .catch(error => {
+        console.error('Erro ao buscar os Pacotes:', error);
+      });
+  }, []);
 
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-      {items.map((item) => (
-        <View key={item.id} style={styles.itemContainer}>
+   
+   <FlatList
+        data={pacotes}
+        keyExtractor={(item) => item.id.toString()} 
+        renderItem={({ item }) => (
+          <View key={item.id} style={styles.itemContainer}>
           <View style={styles.imageTextContainer}>
             <Image
               source={{ uri: item.image }}
               style={styles.image}
               resizeMode="contain"
             />
-            <Text style={styles.text}>{item.text}</Text>
+            <Text style={styles.text}>{item.nome}</Text>
           </View>
         </View>
-      ))}
-    </ScrollView>
-  );
-};
+        )}
+      />
 
-const HomeScreen = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Assine seu Pacote:</Text>
-      <HorizontalList />
-    </View>
+    </ScrollView>
   );
 };
 
@@ -106,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default Pacotes;
