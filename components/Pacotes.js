@@ -26,7 +26,7 @@ const Pacotes = () => {
           <View key={item.id} style={styles.itemContainer}>
           <View style={styles.imageTextContainer}>
             <Image
-              source={{ uri: item.image }}
+              source={{ uri: item.imagem }}
               style={styles.image}
               resizeMode="contain"
             />
