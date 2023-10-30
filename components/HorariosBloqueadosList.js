@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, ScrollView, Dimensions } from 'react-native';
 import axios from 'axios';
+import { format } from 'date-fns';
 
 const HorariosBloqueadosList = () => {
   const [horariosBloqueados, setHorariosBloqueados] = useState([]);
@@ -9,7 +10,11 @@ const HorariosBloqueadosList = () => {
     axios
       .get('http://localhost:19003/horarios_bloqueados/')
       .then((response) => {
-        setHorariosBloqueados(response.data);
+        const formattedHorarios = response.data.map((item) => ({
+          ...item,
+          dia: format(new Date(item.dia), 'dd-MM-yyyy'),
+        }));
+        setHorariosBloqueados(formattedHorarios);
       })
       .catch((error) => {
         console.error('Erro ao buscar os horários bloqueados:', error);
@@ -22,14 +27,14 @@ const HorariosBloqueadosList = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Confira os horários e entre em contato!</Text>
       <Text style={styles.subtitle}>Horários Indisponíveis:</Text>
-      <ScrollView style={{ width: '90%' }}>
+      <ScrollView style={{ width: '90%', height: '70%' }}>
         <FlatList
           data={horariosBloqueados}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <View style={styles.horarioItem}>
-              <Text style={styles.diaText}>{item.dia}</Text>
               <Text style={styles.horaText}>{item.hora_inicio} às {item.hora_fim}</Text>
+              <Text style={styles.diaText}>{item.dia}</Text>
             </View>
           )}
         />
@@ -67,14 +72,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   diaText: {
+    fontSize: 14,
+    color: '#555',
+  },
+  horaText: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#333',
     marginBottom: 5,
-  },
-  horaText: {
-    fontSize: 14,
-    color: '#555',
   },
 });
 
