@@ -6,6 +6,7 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  Linking,
 } from "react-native";
 import axios from "axios";
 
@@ -23,6 +24,21 @@ const Pacotes = () => {
       });
   }, []);
 
+  const openWhatsApp = (mensagem) => {
+    const phoneNumber = "+55996731463"; 
+    const whatsappMessage = `Olá, gostaria de agendar ${mensagem}`;
+
+    const url = `whatsapp://send?phone=${phoneNumber}&text=${whatsappMessage}`;
+
+    Linking.openURL(url)
+      .then((data) => {
+        console.log("WhatsApp aberto com sucesso");
+      })
+      .catch((error) => {
+        console.error("Erro ao abrir o WhatsApp: ", error);
+      });
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Assine nossos Pacotes:</Text>
@@ -33,23 +49,27 @@ const Pacotes = () => {
       >
         {pacotes.map((item) => (
           <View key={item.id} style={styles.itemContainer}>
-          <View style={styles.imageTextContainer}>
-            <Image
-              source={{ uri: item.imagem }}
-              style={styles.image}
-              resizeMode="contain"
-            />
-            <Text style={styles.text}>{item.nome}</Text>
+            <View style={styles.imageTextContainer}>
+              <Image
+                source={{ uri: item.imagem }}
+                style={styles.image}
+                resizeMode="contain"
+              />
+              <Text style={styles.text}>{item.nome}</Text>
+            </View>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => openWhatsApp(item.nome)}
+            >
+              <Text style={styles.buttonText}>Agendar Pacote</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Agendar Pacote</Text>
-          </TouchableOpacity>
-        </View>
-      ))}
-    </ScrollView>
-  </View>
-);
+        ))}
+      </ScrollView>
+    </View>
+  );
 };
+
 
 const styles = StyleSheet.create({
   scrollViewContent: {
