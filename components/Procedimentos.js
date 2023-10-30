@@ -6,8 +6,24 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  Linking,
 } from "react-native";
 import axios from "axios";
+
+  const openWhatsApp = (mensagem) => {
+    const phoneNumber = "+55996731463"; 
+    const whatsappMessage = `Olá, gostaria de agendar ${mensagem}`;
+
+    const url = `whatsapp://send?phone=${phoneNumber}&text=${whatsappMessage}`;
+
+    Linking.openURL(url)
+      .then((data) => {
+        console.log("WhatsApp aberto com sucesso");
+      })
+      .catch((error) => {
+        console.error("Erro ao abrir o WhatsApp: ", error);
+      });
+  };
 
 const Procedimentos = () => {
   const [procedimentos, setProcedimentos] = useState([]);
@@ -41,7 +57,10 @@ const Procedimentos = () => {
               />
               <Text style={styles.text}>{item.nome}</Text>
             </View>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => openWhatsApp(item.nome)}
+            >
               <Text style={styles.buttonText}>Agendar Procedimento</Text>
             </TouchableOpacity>
           </View>
