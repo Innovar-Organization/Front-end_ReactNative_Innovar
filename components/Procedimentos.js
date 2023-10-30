@@ -5,7 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   Image,
-  FlatList,
+  TouchableOpacity,
 } from "react-native";
 import axios from "axios";
 
@@ -41,6 +41,9 @@ const Procedimentos = () => {
               />
               <Text style={styles.text}>{item.nome}</Text>
             </View>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Agendar Procedimento</Text>
+            </TouchableOpacity>
           </View>
         ))}
       </ScrollView>
@@ -86,6 +89,17 @@ const styles = StyleSheet.create({
     padding: 30,
     textAlign: "center",
     fontSize: 18,
+  },
+  button: {
+    backgroundColor: "#fff",
+    borderRadius: 5,
+    marginTop: 10,
+    padding: 10,
+  },
+  buttonText: {
+    color: "#00b2b5",
+    textAlign: "center",
+    fontSize: 16,
   },
 });
 
