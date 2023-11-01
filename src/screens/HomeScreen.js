@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet} from 'react-native';
+import { ScrollView, View, StyleSheet} from 'react-native';
 import HorariosBloqueadosList from '../components/HorariosBloqueadosList';
 import SlideShow from '../components/SlideShow';
 import Procedimentos  from '../components/Procedimentos';
@@ -8,12 +8,12 @@ import axios from 'axios';
 
 const HomeScreen = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <HorariosBloqueadosList />
       <SlideShow />
       <Procedimentos />
       <Pacotes />
-    </View>
+    </ScrollView>
       
 
   );

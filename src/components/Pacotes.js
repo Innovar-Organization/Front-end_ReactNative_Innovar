@@ -15,7 +15,7 @@ const Pacotes = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:19003/api/pacotes/")
+      .get("http://191.52.55.170:19003/api/pacotes/")
       .then((response) => {
         setPacotes(response.data);
       })
@@ -25,7 +25,7 @@ const Pacotes = () => {
   }, []);
 
   const openWhatsApp = (mensagem) => {
-    const phoneNumber = "+55996731463"; 
+    const phoneNumber = "996731463"; 
     const whatsappMessage = `Olá, gostaria de agendar ${mensagem}`;
 
     const url = `whatsapp://send?phone=${phoneNumber}&text=${whatsappMessage}`;

@@ -3,10 +3,10 @@ import { View, StyleSheet, Image, Dimensions, Text, ScrollView } from "react-nat
 
 const HomeScreen = () => {
   const imageUris = [
-    "http://localhost:19003/media/images/74b1df78-fb4f-4199-ba9c-283be1e8d9bc_NP8yzbH.png",
-    "http://localhost:19003/media/images/48f49e20-e03d-4f22-85ed-8feabe979961_b1e5unp.png",
-    "http://localhost:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
-    "http://localhost:19003/media/images/8d97f9dc-88d8-4903-a85f-cd03b8786cca.png",
+    "http://191.52.55.170:19003/media/images/74b1df78-fb4f-4199-ba9c-283be1e8d9bc_NP8yzbH.png",
+    "http://191.52.55.170:19003/media/images/48f49e20-e03d-4f22-85ed-8feabe979961_b1e5unp.png",
+    "http://191.52.55.170:19003/media/images/5d5d9493-3be7-45e9-b8ea-09c8e63860f7.png",
+    "http://191.52.55.170:19003/media/images/8d97f9dc-88d8-4903-a85f-cd03b8786cca.png",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

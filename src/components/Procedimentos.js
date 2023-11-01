@@ -11,7 +11,7 @@ import {
 import axios from "axios";
 
   const openWhatsApp = (mensagem) => {
-    const phoneNumber = "+55996731463"; 
+    const phoneNumber = "996731463"; 
     const whatsappMessage = `Olá, gostaria de agendar ${mensagem}`;
 
     const url = `whatsapp://send?phone=${phoneNumber}&text=${whatsappMessage}`;
@@ -30,7 +30,7 @@ const Procedimentos = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:19003/api/procedimentos/")
+      .get("http://191.52.55.170:19003/api/procedimentos/")
       .then((response) => {
         setProcedimentos(response.data);
       })

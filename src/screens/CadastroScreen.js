@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:19003/";
+const BASE_URL = "http://191.52.55.170:19003/";
 
 const CadastroScreen = () => {
   const navigation = useNavigation();
