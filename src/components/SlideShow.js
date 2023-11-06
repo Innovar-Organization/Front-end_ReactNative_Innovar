@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Image, Dimensions, Text, ScrollView } from "react-native";
+// import baseUrl from '/src/plugins/config.js'; 
 
 const HomeScreen = () => {
   const imageUris = [

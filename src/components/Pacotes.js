@@ -9,13 +9,14 @@ import {
   Linking,
 } from "react-native";
 import axios from "axios";
+import baseUrl from '/src/plugins/config.js'; 
 
 const Pacotes = () => {
   const [pacotes, setPacotes] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:19003/api/pacotes/")
+      .get(`${baseUrl}/api/pacotes/`)
       .then((response) => {
         setPacotes(response.data);
       })

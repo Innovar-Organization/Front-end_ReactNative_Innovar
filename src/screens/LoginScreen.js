@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Dimensions, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
+import baseUrl from '/src/plugins/config.js'; 
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -26,7 +26,7 @@ const LoginScreen = () => {
   return (
     <View style={styles.bodyContainer}>
       <Image
-        source={{ uri: 'http://localhost:19003/media/images/5dc02292-7520-400e-b45b-dd4ceb9790bb.png' }}
+        source={{ uri: `${baseUrl}/media/images/5dc02292-7520-400e-b45b-dd4ceb9790bb.png` }} 
         style={styles.backgroundImage}
         resizeMode="contain"
       />

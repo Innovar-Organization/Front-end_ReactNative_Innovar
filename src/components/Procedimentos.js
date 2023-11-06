@@ -9,7 +9,7 @@ import {
   Linking,
 } from "react-native";
 import axios from "axios";
-import baseUrl from '/home/wedley.schmoeller/Documentos/wedley/frontend-innovar-react-native/src/plugins/config.js'; 
+import baseUrl from '/src/plugins/config.js'; 
 
   const openWhatsApp = (mensagem) => {
     const phoneNumber = "996731463"; 

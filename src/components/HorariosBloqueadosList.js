@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, ScrollView, Dimensions } from 'react-native';
 import axios from 'axios';
 import { format } from 'date-fns';
+import baseUrl from '/src/plugins/config.js'; 
 
 const HorariosBloqueadosList = () => {
   const [horariosBloqueados, setHorariosBloqueados] = useState([]);
 
   useEffect(() => {
     axios
-      .get('http://localhost:19003/horarios_bloqueados/')
+    .get(`${baseUrl}/api/horarios_bloqueados/`)
       .then((response) => {
         const formattedHorarios = response.data.map((item) => ({
           ...item,
