@@ -15,7 +15,7 @@ const Pacotes = () => {
 
   useEffect(() => {
     axios
-      .get("http://191.52.55.170:19003/api/pacotes/")
+      .get("http://localhost:19003/api/pacotes/")
       .then((response) => {
         setPacotes(response.data);
       })

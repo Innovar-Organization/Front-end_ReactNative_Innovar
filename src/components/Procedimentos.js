@@ -30,7 +30,7 @@ const Procedimentos = () => {
 
   useEffect(() => {
     axios
-      .get("http://191.52.55.170:19003/api/procedimentos/")
+      .get("http://localhost:19003/api/procedimentos/")
       .then((response) => {
         setProcedimentos(response.data);
       })

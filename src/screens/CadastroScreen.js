@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
     color: "#666",
   },
   loginButton: {
-    marginTop: 20, // Espaçamento superior para separar o botão de cadastro do botão de login
+    marginTop: 20,
   },
   loginButtonText: {
     color: "#00b5b2",
