@@ -9,6 +9,7 @@ import {
   Linking,
 } from "react-native";
 import axios from "axios";
+import baseUrl from '/home/wedley.schmoeller/Documentos/wedley/frontend-innovar-react-native/src/plugins/config.js'; 
 
   const openWhatsApp = (mensagem) => {
     const phoneNumber = "996731463"; 
@@ -30,7 +31,7 @@ const Procedimentos = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:19003/api/procedimentos/")
+    .get(`${baseUrl}/api/procedimentos/`)
       .then((response) => {
         setProcedimentos(response.data);
       })

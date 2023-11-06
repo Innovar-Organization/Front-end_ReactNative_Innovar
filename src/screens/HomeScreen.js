@@ -14,7 +14,6 @@ const HomeScreen = () => {
       <Procedimentos />
       <Pacotes />
     </ScrollView>
-      
 
   );
 };
