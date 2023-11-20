@@ -9,7 +9,7 @@ const HorariosBloqueadosList = () => {
 
   useEffect(() => {
     axios
-    .get(`${baseUrl}/api/horarios_bloqueados/`)
+    .get(`${baseUrl}/horario_bloqueado/`)
       .then((response) => {
         const formattedHorarios = response.data.map((item) => ({
           ...item,
@@ -34,8 +34,7 @@ const HorariosBloqueadosList = () => {
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <View style={styles.horarioItem}>
-              <Text style={styles.horaText}>{item.hora_inicio} às {item.hora_fim}</Text>
-              <Text style={styles.diaText}>{item.dia}</Text>
+              <Text style={styles.horaText}>{item.Horario}</Text>
             </View>
           )}
         />

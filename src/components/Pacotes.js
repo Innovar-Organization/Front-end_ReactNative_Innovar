@@ -16,7 +16,7 @@ const Pacotes = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/api/pacotes/`)
+      .get(`${baseUrl}/pacotes/`)
       .then((response) => {
         setPacotes(response.data);
       })
@@ -57,13 +57,19 @@ const Pacotes = () => {
                 resizeMode="contain"
               />
               <Text style={styles.text}>{item.nome}</Text>
+              <Text style={styles.textDesc}>{item.descricao}</Text>
+
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => openWhatsApp(item.nome)}
+              >
+                <Text style={styles.buttonText}>Agendar Pacote</Text>
+              </TouchableOpacity>
+
+
             </View>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => openWhatsApp(item.nome)}
-            >
-              <Text style={styles.buttonText}>Agendar Pacote</Text>
-            </TouchableOpacity>
+          
+            
           </View>
         ))}
       </ScrollView>
@@ -96,20 +102,28 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     padding: 20,
-    maxHeight: 300,
+    maxHeight: 900,
     maxWidth: 200,
-    height: 300,
+    height: 430,
   },
   image: {
     width: "100%",
     aspectRatio: 1,
     borderRadius: 10,
+    width:100,
+    height:100, 
   },
   text: {
     color: "black",
     padding: 30,
     textAlign: "center",
-    fontSize: 18,
+    fontSize: 20,
+  },
+  textDesc: {
+    color: "black",
+    paddingBottom:30,
+    textAlign: "justify",
+    fontSize: 14,
   },
   button: {
     backgroundColor: "#fff",

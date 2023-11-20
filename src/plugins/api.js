@@ -11,4 +11,12 @@ const api = axios.create({
   },
 });
 
+api.interceptors.request.use((req) => {
+  const currentUserState = getRecoil(userState);
+  if (currentUserState.access != null) {
+    req.headers.authorization = `Bearer ${currentUserState.access}`;
+  }
+  return req;
+});
+
 export default api;
