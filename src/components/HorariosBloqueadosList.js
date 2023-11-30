@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import baseUrl from '/src/plugins/config.js'; 
 import axios from 'axios';
 import { format } from 'date-fns';
@@ -28,19 +28,18 @@ const HorariosBloqueadosList = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Confira os horários e entre em contato!</Text>
       <Text style={styles.subtitle}>Horários Indisponíveis:</Text>
-      <ScrollView style={{ width: '90%', height: '70%' }}>
-        <FlatList
-          data={horariosBloqueados}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.horarioItem}>
-              <Text style={styles.diaText}>{item.data}</Text>
-              <Text style={[styles.horaText, { paddingTop: 10 }]}>
-                {`${item.hora_inicio} às ${item.hora_fim}`}
-              </Text>
-            </View>
-          )}
-        />
+      <ScrollView
+        style={styles.scrollContainer}
+        showsVerticalScrollIndicator={false} // Oculta a barra de rolagem vertical
+      >
+        {horariosBloqueados.map((item) => (
+          <View key={item.id} style={styles.horarioItem}>
+            <Text style={styles.diaText}>{item.data}</Text>
+            <Text style={[styles.horaText, { paddingTop: 10 }]}>
+              {`${item.hora_inicio} às ${item.hora_fim}`}
+            </Text>
+          </View>
+        ))}
       </ScrollView>
     </View>
   );
@@ -69,6 +68,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: 'center',
     fontFamily: 'Georgia',
+  },
+  scrollContainer: {
+    width: '90%',
+    maxHeight: 450, 
   },
   horarioItem: {
     marginBottom: 10,
