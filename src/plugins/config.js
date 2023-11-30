@@ -1,3 +1,3 @@
-const baseUrl = 'http://0.0.0.0:19003';
+const baseUrl = 'http://localhost:19003';
 
 export default baseUrl;
