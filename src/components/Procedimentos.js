@@ -11,6 +11,20 @@ import {
 import axios from "axios";
 import baseUrl from '/src/plugins/config.js'; 
 
+const Procedimentos = () => {
+  const [procedimentos, setProcedimentos] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/procedimentos/`)
+      .then((response) => {
+        setProcedimentos(response.data);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar os Procedimentos:", error);
+      });
+  }, []);
+
   const openWhatsApp = (mensagem) => {
     const phoneNumber = "996731463"; 
     const whatsappMessage = `Olá, gostaria de agendar ${mensagem}`;
@@ -26,23 +40,9 @@ import baseUrl from '/src/plugins/config.js';
       });
   };
 
-const Procedimentos = () => {
-  const [procedimentos, setProcedimentos] = useState([]);
-
-  useEffect(() => {
-    axios
-    .get(`${baseUrl}/api/procedimentos/`)
-      .then((response) => {
-        setProcedimentos(response.data);
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar os Procedimentos:", error);
-      });
-  }, []);
-
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Veja nossos Procedimentos:</Text>
+      <Text style={styles.title}>Assine nossos Procedimentos:</Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -57,13 +57,15 @@ const Procedimentos = () => {
                 resizeMode="contain"
               />
               <Text style={styles.text}>{item.nome}</Text>
+              <Text style={styles.textDesc}>{item.descricao}</Text>
+
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => openWhatsApp(item.nome)}
+              >
+                <Text style={styles.buttonText}>Agendar Procedimento</Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => openWhatsApp(item.nome)}
-            >
-              <Text style={styles.buttonText}>Agendar Procedimento</Text>
-            </TouchableOpacity>
           </View>
         ))}
       </ScrollView>
@@ -95,20 +97,28 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     padding: 20,
-    maxHeight: 300,
+    maxHeight: 900,
     maxWidth: 200,
-    height: 300,
+    height: 430,
   },
   image: {
     width: "100%",
     aspectRatio: 1,
     borderRadius: 10,
+    width:100,
+    height:100, 
   },
   text: {
     color: "black",
     padding: 30,
     textAlign: "center",
-    fontSize: 18,
+    fontSize: 20,
+  },
+  textDesc: {
+    color: "black",
+    paddingBottom:30,
+    textAlign: "justify",
+    fontSize: 14,
   },
   button: {
     backgroundColor: "#fff",
