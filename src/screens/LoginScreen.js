@@ -26,7 +26,7 @@ const LoginScreen = () => {
   return (
     <View style={styles.bodyContainer}>
       <Image
-        source={{ uri: `${baseUrl}/media/images/5dc02292-7520-400e-b45b-dd4ceb9790bb.png` }} 
+        source={{ uri: `${baseUrl}/media/images/adb07347-ffe3-4940-bdfc-69decdf4385b.png` }} 
         style={styles.backgroundImage}
         resizeMode="contain"
       />

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, ScrollView, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
 import axios from 'axios';
 import { format } from 'date-fns';
-import baseUrl from '/src/plugins/config.js'; 
 
 const HorariosBloqueadosList = () => {
   const [horariosBloqueados, setHorariosBloqueados] = useState([]);
 
   useEffect(() => {
     axios
-    .get(`${baseUrl}/horario_bloqueado/`)
+      .get('https://seu-backend.com/horariosbloqueados/')  
       .then((response) => {
         const formattedHorarios = response.data.map((item) => ({
-          ...item,
-          dia: format(new Date(item.dia), 'dd-MM-yyyy'),
+          id: item.id,
+          data: format(new Date(item.data), 'dd-MM-yyyy'),
+          hora_inicio: format(new Date(item.data + ' ' + item.hora_inicio), 'HH:mm'),
+          hora_fim: format(new Date(item.data + ' ' + item.hora_fim), 'HH:mm'),
         }));
         setHorariosBloqueados(formattedHorarios);
       })
@@ -21,8 +22,6 @@ const HorariosBloqueadosList = () => {
         console.error('Erro ao buscar os horários bloqueados:', error);
       });
   }, []);
-
-  const windowWidth = Dimensions.get('window').width;
 
   return (
     <View style={styles.container}>
@@ -34,7 +33,10 @@ const HorariosBloqueadosList = () => {
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <View style={styles.horarioItem}>
-              <Text style={styles.horaText}>{item.Horario}</Text>
+              <Text style={styles.diaText}>{item.data}</Text>
+              <Text style={styles.horaText}>
+                {`Das ${item.hora_inicio} até ${item.hora_fim}`}
+              </Text>
             </View>
           )}
         />
