@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     padding: 20,
     maxWidth: 200,
     flexGrow: 1,
-    flexDirection: 'column',  
+    flexDirection: 'column', 
   },
   scrollViewContent: {
     flexDirection: "row",
@@ -92,9 +92,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#00b5b2",
   },
   title: {
-    color: "white",
+    color: "#fff",
     fontSize: 25,
     fontWeight: "bold",
+    fontFamily: "Georgia",
     textAlign: "center",
     marginTop: 10,
     marginBottom: 20,
@@ -119,16 +120,20 @@ const styles = StyleSheet.create({
     height:100, 
   },
   text: {
-    color: "black",
+    color: "#000",
     padding: 30,
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 22,  
+    fontFamily: "Georgia",
   },
   textDesc: {
-    color: "black",
+    color: "#000",
     paddingBottom:30,
-    textAlign: "justify",
-    fontSize: 14,
+    textAlign: "center",
+    color: "#696969",
+    fontSize: 12,  
+    fontFamily: "Georgia",
+    fontWeight: "bold",
   },
   button: {
     backgroundColor: "#fff",
@@ -139,8 +144,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#00b2b5",
     textAlign: "center",
-    fontSize: 16,
+    fontSize: 18, 
+    fontFamily: "Georgia",
   },
 });
-
 export default Procedimentos;
