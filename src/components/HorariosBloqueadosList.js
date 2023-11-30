@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
+import baseUrl from '/src/plugins/config.js'; 
 import axios from 'axios';
 import { format } from 'date-fns';
 
@@ -8,7 +9,7 @@ const HorariosBloqueadosList = () => {
 
   useEffect(() => {
     axios
-      .get('https://seu-backend.com/horariosbloqueados/')  
+      .get(`${baseUrl}/horario_bloqueado/`)
       .then((response) => {
         const formattedHorarios = response.data.map((item) => ({
           id: item.id,
@@ -34,8 +35,8 @@ const HorariosBloqueadosList = () => {
           renderItem={({ item }) => (
             <View style={styles.horarioItem}>
               <Text style={styles.diaText}>{item.data}</Text>
-              <Text style={styles.horaText}>
-                {`Das ${item.hora_inicio} até ${item.hora_fim}`}
+              <Text style={[styles.horaText, { paddingTop: 10 }]}>
+                {`${item.hora_inicio} às ${item.hora_fim}`}
               </Text>
             </View>
           )}
@@ -59,13 +60,15 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginBottom: 10,
     textAlign: 'center',
+    fontFamily: 'Georgia',
   },
   subtitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#181818',
     marginBottom: 10,
     textAlign: 'center',
+    fontFamily: 'Georgia',
   },
   horarioItem: {
     marginBottom: 10,
@@ -75,13 +78,16 @@ const styles = StyleSheet.create({
   },
   diaText: {
     fontSize: 14,
-    color: '#555',
+    color: '#696969',
+    fontFamily: 'Georgia',
   },
   horaText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#000',
     marginBottom: 5,
+    fontFamily: 'Georgia',
+    fontSize: 15,
   },
 });
 
