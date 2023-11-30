@@ -50,7 +50,7 @@ const Pacotes = () => {
       >
         {pacotes.map((item) => (
           <View key={item.id} style={styles.itemContainer}>
-            <View style={styles.imageTextContainer}>
+            <View style={styles.cardContainer}>
               <Image
                 source={{ uri: item.imagem }}
                 style={styles.image}
@@ -58,18 +58,14 @@ const Pacotes = () => {
               />
               <Text style={styles.text}>{item.nome}</Text>
               <Text style={styles.textDesc}>{item.descricao}</Text>
-
+  
               <TouchableOpacity
-                style={styles.button}
+                style={[styles.button, { marginTop: 'auto' }]}
                 onPress={() => openWhatsApp(item.nome)}
               >
                 <Text style={styles.buttonText}>Agendar Pacote</Text>
               </TouchableOpacity>
-
-
             </View>
-          
-            
           </View>
         ))}
       </ScrollView>
@@ -79,6 +75,16 @@ const Pacotes = () => {
 
 
 const styles = StyleSheet.create({
+
+  cardContainer: {
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    alignItems: "center",
+    padding: 20,
+    maxWidth: 200,
+    flexGrow: 1,
+    flexDirection: 'column',  
+  },
   scrollViewContent: {
     flexDirection: "row",
   },
