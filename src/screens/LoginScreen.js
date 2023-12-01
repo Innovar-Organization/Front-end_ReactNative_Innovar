@@ -58,23 +58,24 @@ const LoginScreen = () => {
 };
 
 const { width, height } = Dimensions.get('window');
+const cardWidth = Math.min(width - 40, 350); 
+
 const styles = StyleSheet.create({
   bodyContainer: {
     flex: 1,
     backgroundColor: '#B8B8B8',
-    alignItems: 'center', 
-    justifyContent: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   backgroundImage: {
-    width: 300,
-    height: 250,
-    resizeMode: 'cover',
+    width: width * 0.8, 
+    height: height * 0.2, 
+    resizeMode: 'contain',
     marginBottom: 10,
   },
   loginContainer: {
-    flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   loginCard: {
     backgroundColor: '#fff',
@@ -85,42 +86,41 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.1,
     shadowRadius: 20,
-    padding: 30,
-    width: 350,
-    marginBottom: 90,
+    padding: width * 0.05, 
+    width: cardWidth,
   },
   loginTitle: {
-    fontSize: 28,
-    marginBottom: 20,
+    fontSize: Math.min(width * 0.08, 28), 
+    marginBottom: width * 0.05, 
     textAlign: 'center',
   },
   inputField: {
     width: '100%',
-    padding: 12,
-    fontSize: 16,
+    padding: width * 0.03, 
+    fontSize: Math.min(width * 0.04, 16), 
     backgroundColor: '#f9f9f9',
     borderRadius: 5,
-    marginBottom: 15,
+    marginBottom: width * 0.04, 
     borderColor: '#00b5b2',
     borderWidth: 2,
   },
   loginButton: {
     backgroundColor: '#00b5b2',
     borderRadius: 5,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
+    paddingVertical: width * 0.04, 
+    paddingHorizontal: width * 0.05,
   },
   loginButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: Math.min(width * 0.04, 16),
     textAlign: 'center',
   },
   CadastroButton: {
-    marginTop: 20, 
+    marginTop: width * 0.1, 
   },
   CadastroButtonText: {
     color: '#00b5b2',
-    fontSize: 16,
+    fontSize: Math.min(width * 0.04, 16), 
     textAlign: 'center',
   },
 });
