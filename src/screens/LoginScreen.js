@@ -62,7 +62,10 @@ const { width, height } = Dimensions.get('window');
 const cardWidth = Math.min(width - 40, 350); 
 
 const styles = StyleSheet.create({
+
+  
   bodyContainer: {
+    fontFamily: 'Georgia',
     flex: 1,
     backgroundColor: '#B8B8B8',
     alignItems: 'center',
@@ -75,6 +78,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   loginContainer: {
+    fontFamily: 'Georgia',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -91,11 +95,13 @@ const styles = StyleSheet.create({
     width: cardWidth,
   },
   loginTitle: {
+    fontFamily: 'Georgia',
     fontSize: Math.min(width * 0.08, 28), 
     marginBottom: width * 0.05, 
     textAlign: 'center',
   },
   inputField: {
+    fontFamily: 'Georgia',
     width: '100%',
     padding: width * 0.03, 
     fontSize: Math.min(width * 0.04, 16), 
@@ -106,6 +112,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   loginButton: {
+    fontFamily: 'Georgia',
     backgroundColor: '#00b5b2',
     borderRadius: 5,
     paddingVertical: width * 0.04, 
@@ -120,6 +127,7 @@ const styles = StyleSheet.create({
     marginTop: width * 0.1, 
   },
   CadastroButtonText: {
+    fontFamily: 'Georgia',
     color: '#00b5b2',
     fontSize: Math.min(width * 0.04, 16), 
     textAlign: 'center',
