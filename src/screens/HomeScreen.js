@@ -1,16 +1,14 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet} from 'react-native';
 import HorariosBloqueadosList from '../components/HorariosBloqueadosList';
-import SlideShow from '../components/SlideShow';
 import Procedimentos  from '../components/Procedimentos';
 import Pacotes from '../components/Pacotes'
-import axios from 'axios';
+
 
 const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <HorariosBloqueadosList />
-      <SlideShow />
       <Procedimentos />
       <Pacotes />
     </ScrollView>
