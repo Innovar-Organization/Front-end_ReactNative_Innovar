@@ -16,7 +16,7 @@ const Pacotes = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/pacotes/`)
+      .get(`${baseUrl}pacotes/`)
       .then((response) => {
         setPacotes(response.data);
       })
@@ -52,7 +52,7 @@ const Pacotes = () => {
           <View key={item.id} style={styles.itemContainer}>
             <View style={styles.cardContainer}>
               <Image
-                source={{ uri: item.imagem }}
+                source={{ uri: item.imagem.url }}
                 style={styles.image}
                 resizeMode="contain"
               />
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     width: "100%",
     aspectRatio: 1,
     borderRadius: 10,
-    width:100,
+    width:200,
     height:100, 
   },
   text: {

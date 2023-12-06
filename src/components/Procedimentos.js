@@ -16,7 +16,7 @@ const Procedimentos = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/procedimentos/`)
+      .get(`${baseUrl}procedimentos/`)
       .then((response) => {
         setProcedimentos(response.data);
       })
@@ -52,7 +52,7 @@ const Procedimentos = () => {
           <View key={item.id} style={styles.itemContainer}>
             <View style={styles.cardContainer}>
               <Image
-                source={{ uri: item.imagem }}
+                source={{ uri: item.imagem.url }}
                 style={styles.image}
                 resizeMode="contain"
               />
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     width: "100%",
     aspectRatio: 1,
     borderRadius: 10,
-    width:100,
+    width:200,
     height:100, 
   },
   text: {

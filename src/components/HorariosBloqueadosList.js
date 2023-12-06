@@ -9,7 +9,7 @@ const HorariosBloqueadosList = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/horario_bloqueado/`)
+      .get(`${baseUrl}horario_bloqueado/`)
       .then((response) => {
         const formattedHorarios = response.data.map((item) => ({
           id: item.id,
