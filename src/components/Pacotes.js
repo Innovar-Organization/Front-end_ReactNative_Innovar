@@ -9,7 +9,7 @@ import {
   Linking,
 } from "react-native";
 import axios from "axios";
-import baseUrl from '../plugins/config.js'; 
+import baseUrl from '../plugins/config.js';
 
 const Pacotes = () => {
   const [pacotes, setPacotes] = useState([]);
@@ -26,7 +26,7 @@ const Pacotes = () => {
   }, []);
 
   const openWhatsApp = (mensagem) => {
-    const phoneNumber = "996731463"; 
+    const phoneNumber = "996731463";
     const whatsappMessage = `Olá, gostaria de agendar ${mensagem}`;
 
     const url = `whatsapp://send?phone=${phoneNumber}&text=${whatsappMessage}`;
@@ -48,8 +48,14 @@ const Pacotes = () => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollViewContent}
       >
-        {pacotes.map((item) => (
-          <View key={item.id} style={styles.itemContainer}>
+        {pacotes.map((item, index) => (
+          <View
+            key={item.id}
+            style={[
+              styles.itemContainer,
+              index === pacotes.length - 1 && { marginRight: 20 }, 
+            ]}
+          >
             <View style={styles.cardContainer}>
               <Image
                 source={{ uri: item.imagem.url }}
@@ -58,7 +64,7 @@ const Pacotes = () => {
               />
               <Text style={styles.text}>{item.nome}</Text>
               <Text style={styles.textDesc}>{item.descricao}</Text>
-  
+
               <TouchableOpacity
                 style={[styles.button, { marginTop: 'auto' }]}
                 onPress={() => openWhatsApp(item.nome)}
@@ -73,9 +79,7 @@ const Pacotes = () => {
   );
 };
 
-
 const styles = StyleSheet.create({
-
   cardContainer: {
     backgroundColor: "#fff",
     borderRadius: 10,
@@ -83,7 +87,7 @@ const styles = StyleSheet.create({
     padding: 20,
     maxWidth: 200,
     flexGrow: 1,
-    flexDirection: 'column', 
+    flexDirection: 'column',
   },
   scrollViewContent: {
     flexDirection: "row",
@@ -91,12 +95,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#00b5b2",
+    paddingHorizontal: 10, 
   },
   title: {
     color: "#fff",
     fontSize: 25,
     fontWeight: "bold",
-
     textAlign: "center",
     marginTop: 10,
     marginBottom: 20,
@@ -117,23 +121,22 @@ const styles = StyleSheet.create({
     width: "100%",
     aspectRatio: 1,
     borderRadius: 10,
-    width:200,
-    height:100, 
+    width: 200,
+    height: 100,
   },
   text: {
     color: "#000",
-    padding: 30,
-    textAlign: "auto",
-    fontSize: 22,  
-
+    padding: 10,
+    textAlign: "center",
+    fontSize: 18,
+    maxWidth: 500,
   },
   textDesc: {
     color: "#000",
-    paddingBottom:30,
+    paddingBottom: 30,
     textAlign: "auto",
     color: "#696969",
-    fontSize: 12,  
-
+    fontSize: 12,
     fontWeight: "bold",
   },
   button: {
@@ -145,8 +148,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#00b2b5",
     textAlign: "center",
-    fontSize: 18, 
-
+    fontSize: 18,
   },
 });
 

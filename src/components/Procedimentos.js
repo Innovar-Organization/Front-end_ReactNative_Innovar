@@ -48,8 +48,14 @@ const Procedimentos = () => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollViewContent}
       >
-        {procedimentos.map((item) => (
-          <View key={item.id} style={styles.itemContainer}>
+        {procedimentos.map((item, index) => (
+          <View
+            key={item.id}
+            style={[
+              styles.itemContainer,
+              index === procedimentos.length - 1 && { marginRight: 20 }, // Espaço adicional no último item
+            ]}
+          >
             <View style={styles.cardContainer}>
               <Image
                 source={{ uri: item.imagem.url }}
@@ -74,7 +80,6 @@ const Procedimentos = () => {
 };
 
 const styles = StyleSheet.create({
-
   cardContainer: {
     backgroundColor: "#fff",
     borderRadius: 10,
@@ -86,6 +91,7 @@ const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flexDirection: "row",
+    paddingHorizontal: 10, 
   },
   container: {
     flex: 1,
@@ -95,7 +101,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 25,
     fontWeight: "bold",
-
     textAlign: "center",
     marginTop: 10,
     marginBottom: 20,
@@ -106,7 +111,7 @@ const styles = StyleSheet.create({
   imageTextContainer: {
     backgroundColor: "#fff",
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: "auto",
     padding: 20,
     maxHeight: 900,
     maxWidth: 200,
@@ -121,17 +126,17 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#000",
-    padding: 30,
+    padding: 10,
     textAlign: "center",
-    fontSize: 22,  
- 
+    fontSize: 18,  
+    maxWidth: 500,
   },
   textDesc: {
     color: "#000",
     paddingBottom:30,
-    textAlign: "center",
+    textAlign: "auto",
     color: "#696969",
-
+    fontSize: 12,  
     fontWeight: "bold",
   },
   button: {
@@ -144,7 +149,7 @@ const styles = StyleSheet.create({
     color: "#00b2b5",
     textAlign: "center",
     fontSize: 18, 
-
   },
 });
+
 export default Procedimentos;
