@@ -9,7 +9,7 @@ import {
   Linking,
 } from "react-native";
 import axios from "axios";
-import baseUrl from '/src/plugins/config.js'; 
+import baseUrl from '../plugins/config.js'; 
 
 const Pacotes = () => {
   const [pacotes, setPacotes] = useState([]);
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 25,
     fontWeight: "bold",
-    fontFamily: "Georgia",
+
     textAlign: "center",
     marginTop: 10,
     marginBottom: 20,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     padding: 30,
     textAlign: "center",
     fontSize: 22,  
-    fontFamily: "Georgia",
+
   },
   textDesc: {
     color: "#000",
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#696969",
     fontSize: 12,  
-    fontFamily: "Georgia",
+
     fontWeight: "bold",
   },
   button: {
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     color: "#00b2b5",
     textAlign: "center",
     fontSize: 18, 
-    fontFamily: "Georgia",
+
   },
 });
 

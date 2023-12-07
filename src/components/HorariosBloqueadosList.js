@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import baseUrl from '/src/plugins/config.js'; 
+import baseUrl from '../plugins/config.js'; 
 import axios from 'axios';
 import { format } from 'date-fns';
 
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginBottom: 10,
     textAlign: 'center',
-    fontFamily: 'Georgia',
+    
   },
   subtitle: {
     fontSize: 18,
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     color: '#181818',
     marginBottom: 10,
     textAlign: 'center',
-    fontFamily: 'Georgia',
+    
   },
   scrollContainer: {
     width: '90%',
@@ -82,14 +82,14 @@ const styles = StyleSheet.create({
   diaText: {
     fontSize: 14,
     color: '#696969',
-    fontFamily: 'Georgia',
+    
   },
   horaText: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#000',
     marginBottom: 5,
-    fontFamily: 'Georgia',
+    
     fontSize: 15,
   },
 });
