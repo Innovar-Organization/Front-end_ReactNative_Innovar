@@ -1,18 +1,16 @@
 import React from 'react';
-import { ScrollView, View, StyleSheet} from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import HorariosBloqueadosList from '../components/HorariosBloqueadosList';
-import Procedimentos  from '../components/Procedimentos';
-import Pacotes from '../components/Pacotes'
-
+import Procedimentos from '../components/Procedimentos';
+import Pacotes from '../components/Pacotes';
 
 const HomeScreen = () => {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
       <HorariosBloqueadosList />
       <Procedimentos />
       <Pacotes />
     </ScrollView>
-
   );
 };
 
@@ -20,7 +18,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#00b5b2',
-    display:'flex',
+    display: 'flex',
+  },
+  scrollContent: {
+    paddingBottom: 40,
   },
   content: {
     flex: 1,

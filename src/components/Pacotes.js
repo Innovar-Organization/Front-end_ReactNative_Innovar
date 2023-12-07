@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   imageTextContainer: {
     backgroundColor: "#fff",
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: "auto",
     padding: 20,
     maxHeight: 900,
     maxWidth: 200,
@@ -123,14 +123,14 @@ const styles = StyleSheet.create({
   text: {
     color: "#000",
     padding: 30,
-    textAlign: "center",
+    textAlign: "auto",
     fontSize: 22,  
 
   },
   textDesc: {
     color: "#000",
     paddingBottom:30,
-    textAlign: "center",
+    textAlign: "auto",
     color: "#696969",
     fontSize: 12,  
 
